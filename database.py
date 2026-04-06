@@ -1,8 +1,12 @@
 import psycopg2
+import os
+from dotenv import load_dotenv
 
+# Carrega as variáveis do arquivo .env
+load_dotenv()
 
-# Sua URL de conexão
-DB_URL = "postgres://avnadmin:AVNS_T6QHOhUgvDRVXGUQXLA@pg-174877d1-app-consumo.d.aivencloud.com:17956/defaultdb?sslmode=require"
+# Busca a URL da variável de ambiente
+DB_URL = os.getenv("DB_URL")
 
 try:
     # Estabelecendo a conexão
@@ -20,7 +24,6 @@ except Exception as error:
     print(f"Erro ao conectar: {error}")
 
 finally:
-    # Sempre feche a conexão ao terminar
     if 'connection' in locals() and connection:
         cursor.close()
         connection.close()

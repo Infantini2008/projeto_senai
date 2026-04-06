@@ -1,0 +1,77 @@
+{
+  "app": {
+    "main.py": {
+      "framework": "Flask",
+      "blueprints": [
+        "user_bp (/usuarios)",
+        "consumo_bp (/consumos)",
+        "dica_bp (/dicas)",
+        "meta_bp (/metas)"
+      ],
+      "middlewares": ["CORS", "Flask-Login"],
+      "routes": {
+        "/": "API is running"
+      }
+    },
+    "models": {
+      "models.py": {
+        "classes": [
+          {
+            "Usuario": ["id", "nome", "email", "senha_hash"]
+          },
+          {
+            "Consumo": ["id", "user_id", "nome", "valor"]
+          },
+          {
+            "DicaEconomia": ["id", "titulo", "descricao"]
+          },
+          {
+            "Meta": ["id", "user_id", "titulo", "descricao"]
+          }
+        ]
+      }
+    },
+    "services": {
+      "user_service.py": {
+        "functions": [
+          "criar_usuario(nome, email, senha)",
+          "autenticar_usuario(email, senha)",
+          "get_usuario(user_id)"
+        ],
+        "storage": "usuarios (dict), proximo_id_usuario (int)"
+      },
+      "consumo_service.py": {
+        "functions": [
+          "criar_consumo(user_id, nome, valor)",
+          "listar_consumos(user_id)"
+        ],
+        "storage": "consumos (dict), proximo_id_consumo (int)"
+      },
+      "dica_service.py": {
+        "functions": ["criar_dica(titulo, descricao)", "listar_dicas()"],
+        "storage": "dicas (dict), proximo_id_dica (int)"
+      },
+      "meta_service.py": {
+        "functions": [
+          "criar_meta(user_id, titulo, descricao)",
+          "listar_metas(user_id)"
+        ],
+        "storage": "metas (dict), proximo_id_meta (int)"
+      }
+    },
+    "controllers": {
+      "user_controller.py": {
+        "routes": ["POST /criar_usuario", "POST /login", "GET /logout"]
+      },
+      "consumo_controller.py": {
+        "routes": ["GET /", "POST /"]
+      },
+      "dica_controller.py": {
+        "routes": ["GET /", "POST /"]
+      },
+      "meta_controller.py": {
+        "routes": ["GET /", "POST /"]
+      }
+    }
+  }
+}

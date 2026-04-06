@@ -1,6 +1,5 @@
 from werkzeug.security import generate_password_hash, check_password_hash
-from main.model.schemas import Usuario
-
+from main.models.schemas import Usuario
 usuarios = {}
 proximo_id_usuario = 1
 
