@@ -1,4 +1,4 @@
-from main.models.schemas import Consumo
+from Models.Model.schemas import Consumo
 
 consumos = {}
 proximo_id_consumo = 1

@@ -1,4 +1,4 @@
-from main.models.schemas import DicaEconomia
+from Models.Model.schemas import DicaEconomia
 
 dicas = {}
 proximo_id_dica = 1

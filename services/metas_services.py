@@ -1,4 +1,4 @@
-from main.models.schemas import Meta
+from Models.Model.schemas import Meta
 
 metas = {}
 proximo_id_meta = 1
